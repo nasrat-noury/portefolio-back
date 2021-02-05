@@ -12,6 +12,22 @@ router.get("/", (req, res) => {
   });
 });
 
+router.post("/", (req, res) => {
+  const { firstname, lastname, message, email } = req.body;
+  connection.query(
+    "INSERT INTO projet (firstname, lastname, message, mail) VALUES(?, ?, ?, ?)",
+    [firstname, lastname, message, email],
+    (err) => {
+      if (err) {
+        console.log(err);
+        res.status(500).send("erreur");
+      } else {
+        res.status(200).send("message envoyé");
+      }
+    }
+  );
+});
+
 router.delete("/:id", (req, res) => {
   const contact = req.params.id;
   connection.query("DELETE FROM contact WHERE id=?", [contact], (err) => {

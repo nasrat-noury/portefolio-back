@@ -13,10 +13,10 @@ router.get("/", (req, res) => {
 });
 
 router.post("/", (req, res) => {
-  const { name, description, date, img } = req.body;
+  const { name, description, date, img, tech } = req.body;
   connection.query(
-    "INSERT INTO recette (name, description, date, img) VALUES(?, ?, ?, ?)",
-    [name, description, date, img],
+    "INSERT INTO projet (name, description, date, img, tech) VALUES(?, ?, ?, ?, ?)",
+    [name, description, date, img, tech],
     (err) => {
       if (err) {
         console.log(err);
