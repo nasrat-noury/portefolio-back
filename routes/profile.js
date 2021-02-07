@@ -21,7 +21,6 @@ router.post("/", verifyToken, (req, res, next) => {
     } else {
       res.json({
         pseudo: admin.result[0].pseudo,
-
         email: admin.result[0].email,
       });
     }

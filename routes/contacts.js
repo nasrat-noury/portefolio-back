@@ -13,10 +13,10 @@ router.get("/", (req, res) => {
 });
 
 router.post("/", (req, res) => {
-  const { firstname, lastname, message, email } = req.body;
+  const { firstname, lastname, message, phone, email } = req.body;
   connection.query(
-    "INSERT INTO projet (firstname, lastname, message, mail) VALUES(?, ?, ?, ?)",
-    [firstname, lastname, message, email],
+    "INSERT INTO contact (firstname, lastname, message, phone, email) VALUES(?, ?, ?, ?, ?)",
+    [firstname, lastname, message, phone, email],
     (err) => {
       if (err) {
         console.log(err);
