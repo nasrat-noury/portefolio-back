@@ -28,6 +28,24 @@ router.post("/", (req, res) => {
   );
 });
 
+router.put("/:id", (req, res) => {
+  const newProjet = req.body;
+  const idProjet = req.params.id;
+
+  connection.query(
+    "UPDATE projet SET ? WHERE id = ?",
+    [newProjet, idProjet],
+    (err, results) => {
+      if (err) {
+        console.log(err);
+        res.status(500).send("Error updating project");
+      } else {
+        res.status(200).send("Project successfully updated");
+      }
+    }
+  );
+});
+
 router.delete("/:id", (req, res) => {
   const projet = req.params.id;
   connection.query("DELETE FROM projet WHERE id=?", [projet], (err) => {

@@ -24,7 +24,7 @@ router.post("/", (req, res) => {
     (err) => {
       if (err) {
         console.log(err);
-        res.status(500).send("error with the admin");
+        res.status(500).send("error with the projects admin");
       } else {
         res.status(200).send("admin saved with success");
       }
