@@ -34,7 +34,7 @@ router.post("/", (req, res) => {
 
 router.post("/login", (req, res) => {
   const { email, password } = req.body;
-
+  console.log(password);
   connection.query(
     "SELECT * FROM admin WHERE email = ?",
     [email],
@@ -42,7 +42,9 @@ router.post("/login", (req, res) => {
       if (err) {
         res.status(500).send(err);
       } else {
+        console.log(password, result);
         const goodPassword = bcrypt.compareSync(password, result[0].password);
+
         if (goodPassword) {
           jwt.sign({ result }, process.env.SECRET_KEY_JWT, (err, token) => {
             res.json({ token });
